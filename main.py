@@ -2,7 +2,6 @@ import json
 import time
 import colorama
 import requests
-import platform
 
 from colorama import Fore
 
@@ -148,6 +147,19 @@ class Main:
                 pathname = (path.split('FortniteGame/Content/Athena/Items/Consumables/PlaysetGrenade/')[-1])
                 open(f'images/{pathname}.png', 'wb+').write(image.content)     
 
+    def NewSounds(self):
+        with open('datas/NewAssets.json', 'r') as Sounds:
+            Sounds = json.load(Sounds)
+        for i in Sounds:
+            if i.startswith('FortniteGame/Content/Sounds/Apollo/Biomes/MountainBase/MoleWaves/'):
+                path = i
+                print(Fore.YELLOW + f"[{time.strftime('%H:%M')}] " + Fore.MAGENTA + "(Info) " + Fore.BLUE + "Saving: " + Fore.GREEN + path)
+                chunk = requests.get(f'https://benbot.app/api/v1/exportAsset?path={path}')
+                pathname = (path.split('FortniteGame/Content/Sounds/Apollo/Biomes/MountainBase/MoleWaves/')[-1])
+                open(f'sounds/{pathname}.ogg', 'wb+').write(chunk.content)
+                
+            
+
     def main(self):
         print(Fore.YELLOW + f"[{time.strftime('%H:%M')}] " + Fore.MAGENTA + "(Info) " + Fore.WHITE + "Geneating data..")
         newcosmetics = requests.get('https://fortnite-api.com/v2/cosmetics/br/new').json()
@@ -171,6 +183,7 @@ class Main:
         self.NewCosmeticsIcons()
         #self.NewWrapsIcons()
         self.NewWeaponsIcons()
+        self.NewSounds()
         end = time.time()
         print(Fore.YELLOW + f"[{time.strftime('%H:%M')}] " + Fore.MAGENTA + "(Finished) " + Fore.WHITE + f"Data Generated in {round(end - start, 2)}")
 
