@@ -145,18 +145,26 @@ class Main:
                 print(Fore.YELLOW + f"[{time.strftime('%H:%M')}] " + Fore.MAGENTA + "(Info) " + Fore.BLUE + "Generating: " + Fore.GREEN + path)
                 image = requests.get(f'https://benbot.app/api/v1/exportAsset?path={path}')
                 pathname = (path.split('FortniteGame/Content/Athena/Items/Consumables/PlaysetGrenade/')[-1])
-                open(f'images/{pathname}.png', 'wb+').write(image.content)     
+                open(f'images/{pathname}.png', 'wb+').write(image.content)   
+
+
+    # sound extractor made by Leaks Station  
 
     def NewSounds(self):
-        with open('datas/NewAssets.json', 'r') as Sounds:
-            Sounds = json.load(Sounds)
-        for i in Sounds:
-            if i.startswith('FortniteGame/Content/Sounds/Apollo/Biomes/MountainBase/MoleWaves/'):
+        with open('datas/NewAssets.json', 'r') as Icons:
+            Icons = json.load(Icons)
+        for i in Icons :
+            if i.startswith('FortniteGame/Content/Sounds/'):
                 path = i
+                sound = requests.get(f'https://benbot.app/api/v1/exportAsset?path={path}')
+                for x in path :
+                    if x == "_" :
+                        path = path.replace('_', '-')
+                    if x == "/":
+                        path = path.replace('/', '-')
+                    path = path.replace("FortniteGame-Content-Sounds-","")
+                open(f'sounds/{path}.ogg', 'wb+').write(sound.content) 
                 print(Fore.YELLOW + f"[{time.strftime('%H:%M')}] " + Fore.MAGENTA + "(Info) " + Fore.BLUE + "Saving: " + Fore.GREEN + path)
-                chunk = requests.get(f'https://benbot.app/api/v1/exportAsset?path={path}')
-                pathname = (path.split('FortniteGame/Content/Sounds/Apollo/Biomes/MountainBase/MoleWaves/')[-1])
-                open(f'sounds/{pathname}.ogg', 'wb+').write(chunk.content)
                 
             
 
