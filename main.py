@@ -180,7 +180,7 @@ class Main:
         with open('datas/NewAssets.json', 'w') as file:
             json.dump(newassets, file, indent=2)  
         start = time.time()
-        print(Fore.YELLOW + f"[{time.strftime('%H:%M')}] " + Fore.MAGENTA + "(Info) " + Fore.WHITE + "Data Generated - Inizialing..")
+        print(Fore.YELLOW + f"[{time.strftime('%H:%M')}] " + Fore.MAGENTA + "(Info) " + Fore.WHITE + "Data Generated - Initializing..")
         self.LocChunksLoader()
         self.NewBackpacksIcons()
         self.NewCreativeIcons()
