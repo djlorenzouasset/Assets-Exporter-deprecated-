@@ -169,7 +169,7 @@ class Main:
             
 
     def main(self):
-        print(Fore.YELLOW + f"[{time.strftime('%H:%M')}] " + Fore.MAGENTA + "(Info) " + Fore.WHITE + "Geneating data..")
+        print(Fore.YELLOW + f"[{time.strftime('%H:%M')}] " + Fore.MAGENTA + "(Info) " + Fore.WHITE + "Generating data..")
         newcosmetics = requests.get('https://fortnite-api.com/v2/cosmetics/br/new').json()
         aes = requests.get('https://benbot.app/api/v1/status').json()
         newassets = requests.get('https://benbot.app/api/v1/files/added').json()
