@@ -13,6 +13,4 @@ If you want install all requirements in one click open **(install.bat)**
 - Open `install.bat` for install all requirements
 - Start `exporter.bat` for generate all new icons in **images** folder
 
-### Upcoming functions
-
-- Merge all images
+## This program is no longer up to date and may not work. Please open an issue in case of problems.
