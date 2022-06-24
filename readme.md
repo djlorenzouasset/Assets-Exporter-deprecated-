@@ -1,4 +1,4 @@
-# Assets Exporter 
+# Assets Exporter [DEPRECATED]
 
 This program allows you to generate all new icons of a patch in png! 
 
